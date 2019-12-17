@@ -1,0 +1,30 @@
+.container {
+  margin: 10px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.container #logo {
+  width: 45px;
+}
+
+@media screen and (min-width: 768px) {
+  .container > section {
+    display: flex;
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container > section .fileInput {
+    text-align: center;
+  }
+  .container > section .fileInput .btn {
+    margin-top: 40px;
+  }
+}

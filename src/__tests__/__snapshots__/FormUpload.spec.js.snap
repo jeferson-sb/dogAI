@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormUpload component Matches the snapshot 1`] = `
+<div
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragEnter={[Function]}
+  onDragLeave={[Function]}
+  onDragOver={[Function]}
+  onDrop={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <input
+    accept="image/jpeg, image/png, image/jpg"
+    autoComplete="off"
+    multiple={true}
+    onChange={[Function]}
+    onClick={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    tabIndex={-1}
+    type="file"
+  />
+  <h2>
+    Selecione uma imagem
+  </h2>
+  <div
+    className="dropContainer"
+  >
+    <img
+      alt="Illustration upload"
+      src="uploadImage.svg"
+    />
+    <h3>
+      Arraste e solte ou clique aqui
+    </h3>
+    <small>
+      para enviar sua imagem
+    </small>
+    <p>
+      Nenhum arquivo selecionado
+    </p>
+  </div>
+</div>
+`;

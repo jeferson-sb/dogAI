@@ -1,0 +1,8 @@
+.DS_STORE
+node_modules
+build/
+*.log*
+.idea
+.vscode
+.cache
+dist
