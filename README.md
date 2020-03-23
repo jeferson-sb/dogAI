@@ -26,4 +26,4 @@ Secondary:
   J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li and L. Fei-Fei, ImageNet: A Large-Scale Hierarchical Image Database. IEEE Computer Vision and Pattern Recognition (CVPR), 2009.
 
 ## 📝License
-This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE.md)
+This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE)
