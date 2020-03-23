@@ -6,7 +6,7 @@
     "@teachablemachine/image": "^0.8.4",
     "@tensorflow/tfjs": "^1.5.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react-dom": "^16.13.0",
     "react-dropzone": "^10.1.9",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
