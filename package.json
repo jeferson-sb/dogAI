@@ -5,7 +5,7 @@
   "dependencies": {
     "@teachablemachine/image": "^0.8.4",
     "@tensorflow/tfjs": "^1.5.2",
-    "react": "^16.10.2",
+    "react": "^16.13.1",
     "react-dom": "^16.10.2",
     "react-dropzone": "^10.1.9",
     "react-router-dom": "^5.1.2",
