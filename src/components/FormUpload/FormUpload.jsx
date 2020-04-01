@@ -50,16 +50,28 @@ function FormUpload() {
           breed = 'Canídeos'
         }
         const wikipediaApiUrl = encodeURI(
-          `https://pt.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${breed}&limit=1`
+          `https://pt.wikipedia.org/w/api.php?origin=*&action=query&format=json&uselang=pt&prop=extracts&generator=prefixsearch&redirects=1&converttitles=1&formatversion=2&exintro=1&explaintext=1&gpssearch=${breed}`
         )
         try {
           const response = await fetch(wikipediaApiUrl)
           const responseData = await response.json()
+          let filteredDesc
+
+          responseData.query.pages.forEach(page => {
+            if (
+              page.title.toLowerCase().includes(`${breed}`) &&
+              page.extract.search(/(cão|canina|raça)/g) !== -1
+            ) {
+              filteredDesc = page.extract
+            }
+          })
+
           const wiki = {
-            desc: responseData[2][0],
-            wikiUrl: responseData[3][0]
+            desc: filteredDesc.substring(0, 400 - 10) + '...',
+            wikiUrl: `https://pt.wikipedia.org/wiki/${breed}`
           }
-          if (!responseData[1].length) {
+
+          if (!responseData.query) {
             wiki.error = true
           }
           setDescription(wiki)
