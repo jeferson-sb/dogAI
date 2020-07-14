@@ -41,11 +41,12 @@ function FormUpload() {
       )
 
       const prediction = await model.predictTopK(image, 3)
+
       handleResults(prediction)
 
-      async function handleResults(data) {
-        setPredictions(data)
-        let breed = data[0].className.replace(/(_)/gi, ' ')
+      async function handleResults(predictionData) {
+        setPredictions(predictionData)
+        let breed = predictionData[0].className.replace(/(_)/gi, ' ')
         if (breed === 'Cão Selvagem') {
           breed = 'Canídeos'
         }
@@ -54,27 +55,35 @@ function FormUpload() {
         )
         try {
           const response = await fetch(wikipediaApiUrl)
-          const responseData = await response.json()
-          let filteredDesc
+          const wikipediaPages = await response.json()
 
-          responseData.query.pages.forEach(page => {
-            if (
-              page.title.toLowerCase().includes(`${breed}`) &&
-              page.extract.search(/(cão|canina|raça)/g) !== -1
-            ) {
-              filteredDesc = page.extract
+          if (wikipediaPages.query) {
+            let filteredDesc;
+
+            for (const page of wikipediaPages.query.pages) {
+              if (page.title.toLowerCase().includes(breed) && page.extract.search(/(cão|canina|raça)/g) !== -1) {
+                filteredDesc = page.extract
+                break;
+              } else {
+                filteredDesc = wikipediaPages.query.pages[0].extract
+              }
             }
-          })
 
-          const wiki = {
-            desc: filteredDesc.substring(0, 400 - 10) + '...',
-            wikiUrl: `https://pt.wikipedia.org/wiki/${breed}`
+            const wiki = {
+              desc: filteredDesc.substring(0, 400 - 10) + '...',
+              wikiUrl: `https://pt.wikipedia.org/wiki/${breed}`
+            }
+
+            setDescription(wiki)
+          } else {
+            const wiki = {
+              desc: 'No wikipedia found.',
+              wikiUrl: '',
+              error: true
+            }
+            setDescription(wiki)
           }
 
-          if (!responseData.query) {
-            wiki.error = true
-          }
-          setDescription(wiki)
         } catch (error) {
           console.error(error)
         }
@@ -84,6 +93,7 @@ function FormUpload() {
       const end = new Date()
       const elapsedTime = end - start
       console.log(`It took ${elapsedTime / 1000} seconds`)
+
     } catch (err) {
       setLoading(false)
       setError(err)
@@ -157,12 +167,12 @@ function FormUpload() {
           </section>
         </>
       ) : (
-        <div {...getRootProps()}>
-          <input {...getInputProps()} />
-          <h2>Selecione uma imagem</h2>
-          {renderDragMessage(isDragActive, isDragReject)}
-        </div>
-      )}
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            <h2>Selecione uma imagem</h2>
+            {renderDragMessage(isDragActive, isDragReject)}
+          </div>
+        )}
     </>
   )
 }
