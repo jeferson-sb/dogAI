@@ -9,7 +9,7 @@
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.2.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "4.0.0",
     "react-test-renderer": "^16.13.1"
   },
   "scripts": {
