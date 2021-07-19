@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@teachablemachine/image": "^0.8.4",
-    "@tensorflow/tfjs": "^1.7.4",
+    "@tensorflow/tfjs": "^3.8.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-dropzone": "^11.2.4",
