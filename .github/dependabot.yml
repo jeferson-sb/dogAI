@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+  - dependency-name: eslint-plugin-react
+    versions:
+    - 7.22.0
+    - 7.23.1
+  - dependency-name: "@tensorflow/tfjs"
+    versions:
+    - 2.8.5
+    - 2.8.6
+    - 3.0.0
+    - 3.2.0
+    - 3.3.0
+  - dependency-name: react-scripts
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: react-dropzone
+    versions:
+    - 11.3.1
