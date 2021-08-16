@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@teachablemachine/image": "^0.8.4",
+    "@teachablemachine/image": "^0.8.5",
     "@tensorflow/tfjs": "^1.7.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

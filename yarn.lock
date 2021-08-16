@@ -1423,10 +1423,10 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
-"@teachablemachine/image@^0.8.4":
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/@teachablemachine/image/-/image-0.8.4.tgz#11d4ffe0e21e05b687acac26fe55cff8178a0a64"
-  integrity sha512-99zL9OjGHqfQSKR+VcHFSLE5EI93GKQhLfCrrLg0+VcfTA+1nJ4Zf6dKm51ugm8qUaPCa4Sbf8Qs4rkogOihaw==
+"@teachablemachine/image@^0.8.5":
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/@teachablemachine/image/-/image-0.8.5.tgz#ed56f4286a1d21c841cdef4ad9c4cacb1381d399"
+  integrity sha512-u6BLQ8RBn38BKee7mmAl+HS9qWgM/2YmUbQYy21eQfqhb7E8xT5LDp7QqEU31rtgEIMDwB/OG8cjmSiuHpqb7A==
   dependencies:
     autobind-decorator "^2.4.0"
     seedrandom "^2.4.3"
