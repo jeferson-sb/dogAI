@@ -16,5 +16,19 @@
     "sourceType": "module"
   },
   "plugins": ["react", "react-hooks"],
-  "rules": {}
+  "rules": {
+    "react/jsx-filename-extension": "off",
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-console": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": "./src"
+      }
+    }
+  }
 }
