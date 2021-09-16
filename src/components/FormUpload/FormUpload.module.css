@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--sz-2xl);
+  gap: var(--sz-lg);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+
+.uploadContainer {
+  width: 100%;
+  max-width: 500px;
+  margin-top: var(--sz-2xl);
+}
+
+.uploadContainer h2 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: var(--text-2xl);
+  text-align: center;
+  color: var(--white);
+}
+
+.buttonGroup {
+  max-width: 270px;
+  margin: 0 auto var(--sz-lg);
+}
