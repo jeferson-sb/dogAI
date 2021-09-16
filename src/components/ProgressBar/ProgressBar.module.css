@@ -1,0 +1,27 @@
+.progress {
+  display: flex;
+  height: var(--sz-base);
+  overflow: hidden;
+  font-size: var(--text-xsm);
+  background-color: var(--gray);
+  border-radius: 0.25rem;
+}
+
+.progressBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--white);
+  background-color: var(--blue);
+  text-align: center;
+  white-space: nowrap;
+  transition: width 0.6s ease;
+  animation: animate-stripes 5s linear infinite;
+  padding: 0.4rem 0.8rem;
+}
+
+@keyframes animate-stripes {
+  100% {
+    background-position: -100px 0;
+  }
+}
