@@ -4,20 +4,20 @@
   color: var(--white);
 }
 
-.fileInfo-preview {
+.fileInfo_preview {
   max-width: 500px;
   max-height: 280px;
 }
 
-.fileInfo-preview-image {
-  object-fit: contain;
-  object-position: center;
+.fileInfo_previewImage {
   width: 100%;
   height: 100%;
   border-radius: 4px;
+  object-fit: contain;
+  object-position: center;
 }
 
-.fileInfo-preview-caption {
-  padding: 8px 16px;
+.fileInfo_previewCaption {
+  padding: var(--sz-sm) var(--sz-base);
   text-align: center;
 }
