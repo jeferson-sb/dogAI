@@ -17,6 +17,7 @@
   --yellow: hsl(48, 57%, 74%);
   --black: hsl(0, 0%, 19%);
   --gray: hsl(0, 0%, 85%);
+  --purple: hsl(237, 41%, 35%);
 
   /* Sizes */
   --sz-sm: 0.5rem;

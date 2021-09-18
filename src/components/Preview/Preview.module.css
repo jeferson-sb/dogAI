@@ -20,4 +20,5 @@
 .fileInfo_previewCaption {
   padding: var(--sz-sm) var(--sz-base);
   text-align: center;
+  color: var(--purple);
 }

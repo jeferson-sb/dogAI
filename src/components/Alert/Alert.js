@@ -16,7 +16,7 @@ function Alert({ children, type }) {
   )
 
   return (
-    <div className={alertStyles} aria-live="polite">
+    <div className={alertStyles} role="alert" aria-live="polite">
       {children}
     </div>
   )

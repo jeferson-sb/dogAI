@@ -54,7 +54,7 @@ function FormUpload() {
         </div>
       ) : (
         <div className={styles.uploadContainer} {...getRootProps()}>
-          <input {...getInputProps()} />
+          <input {...getInputProps()} data-testid="upload-image" />
           <h2>Choose a file</h2>
 
           {isDragReject && (
