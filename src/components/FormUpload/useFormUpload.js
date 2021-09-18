@@ -1,5 +1,7 @@
 import { useCallback, useState } from 'react'
-import * as tmImage from '@teachablemachine/image'
+
+import { useMLModel } from 'hook/useMLModel'
+import { useFetch } from 'hook/useFetch'
 
 export function useFormUpload() {
   const [file, setFile] = useState([])
@@ -15,9 +17,17 @@ export function useFormUpload() {
 
   const [status, setStatus] = useState(statusType.IDLE)
 
-  const handleResults = async (data) => {
+  const { predict } = useMLModel({
+    modelPath: './model/model.json',
+    metadataPath: './model/metadata.json',
+  })
+
+  const { retrieve } = useFetch()
+
+  const handleResults = useCallback(async (data) => {
     setPrediction(data)
 
+    let filteredDesc
     let breed = data.className.replace(/(_)/gi, ' ')
     if (breed === 'Cão Selvagem') {
       breed = 'Canids'
@@ -27,40 +37,31 @@ export function useFormUpload() {
       `${process.env.REACT_APP_WIKIPEDIA_ENDPOINT}${breed}`
     )
 
-    try {
-      const response = await fetch(wikipediaApiUrl)
+    const wikipediaPages = await retrieve(wikipediaApiUrl)
 
-      if (response.status === 200 && response.ok) {
-        let filteredDesc
-        const wikipediaPages = await response.json()
-
-        if (wikipediaPages.query) {
-          wikipediaPages.query.pages.forEach((page) => {
-            if (
-              page.title.toLowerCase().includes(breed) &&
-              page.extract.search(/(dog|canid|breed)/g) !== -1
-            ) {
-              filteredDesc = page.extract
-            } else {
-              filteredDesc = wikipediaPages.query.pages[0].extract
-            }
-          })
-          setDescription({
-            desc: `${filteredDesc.substring(0, 400 - 10)}...`,
-            wikiUrl: `${process.env.REACT_APP_WIKIPEDIA_WIKI}/${breed}`,
-          })
+    if (wikipediaPages.query) {
+      wikipediaPages.query.pages.forEach((page) => {
+        if (
+          page.title.toLowerCase().includes(breed) &&
+          page.extract.search(/(dog|canid|breed)/g) !== -1
+        ) {
+          filteredDesc = page.extract
         } else {
-          setDescription({
-            desc: 'No wikipedia found.',
-            wikiUrl: '',
-            error: true,
-          })
+          filteredDesc = wikipediaPages.query.pages[0].extract
         }
-      }
-    } catch (err) {
-      throw new Error(err)
+      })
+      setDescription({
+        desc: `${filteredDesc.substring(0, 400 - 10)}...`,
+        wikiUrl: `${process.env.REACT_APP_WIKIPEDIA_WIKI}/${breed}`,
+      })
+    } else {
+      setDescription({
+        desc: 'No wikipedia found.',
+        wikiUrl: '',
+        error: true,
+      })
     }
-  }
+  }, [])
 
   const onDrop = useCallback(async (acceptedFiles) => {
     try {
@@ -71,21 +72,10 @@ export function useFormUpload() {
         })
       )
 
-      // Load model and pick the best prediction out of 10 classes
-
       const image = document.getElementById('image')
-      const model = await tmImage.load(
-        './model/model.json',
-        './model/metadata.json'
-      )
-      const predictions = await model.predictTopK(image, 10)
-      const highestPrediction = predictions.reduce(
-        (prev, current) =>
-          prev.probability > current.probability ? prev : current,
-        0
-      )
+      const mlPrediction = await predict(image)
 
-      await handleResults(highestPrediction)
+      await handleResults(mlPrediction)
     } catch (err) {
       setError(err)
       setStatus(statusType.REJECTED)
