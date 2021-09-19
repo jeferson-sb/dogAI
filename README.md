@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/937b4244-2340-4e42-b344-c04bee2f80b3/deploy-status)](https://app.netlify.com/sites/dogai/deploys)
 
-<video src="./.github/demo.mp4"></video>
+https://user-images.githubusercontent.com/30840709/133912996-73859a5d-dd06-4c92-a964-ba5dd2773b66.mp4
 
 ## 💡 Project
 
