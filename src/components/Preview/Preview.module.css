@@ -1,0 +1,24 @@
+.fileInfo {
+  display: flex;
+  justify-content: center;
+  color: var(--white);
+}
+
+.fileInfo_preview {
+  max-width: 500px;
+  max-height: 280px;
+}
+
+.fileInfo_previewImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.fileInfo_previewCaption {
+  padding: var(--sz-sm) var(--sz-base);
+  text-align: center;
+  color: var(--purple);
+}

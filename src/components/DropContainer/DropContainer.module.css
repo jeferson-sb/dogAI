@@ -1,0 +1,58 @@
+.dropContainer {
+  --border-size: 3px;
+  --border-style: solid;
+  --border-color: transparent;
+
+  width: min(380px, 100%);
+  max-width: 500px;
+  background: var(--white);
+  border-radius: 4px;
+  border: var(--border-size) var(--border-style) var(--border-color);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: var(--sz-lg) var(--sz-3xl);
+  margin: 0 auto;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dropContainer:hover {
+  --border-style: dotted;
+  --border-color: var(--blue);
+}
+
+.active {
+  --border-style: dotted;
+  --border-color: var(--blue);
+}
+
+.reject {
+  --border-style: dotted;
+  --border-color: var(--red);
+}
+
+.dropContainerHeader {
+  color: var(--amethyst);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  margin-bottom: 0;
+}
+
+.reject .dropContainerHeader {
+  color: var(--red);
+}
+
+.dropContainerSubheader {
+  color: var(--amethyst);
+  font-size: var(--text-base);
+}
+
+.dropContainer img {
+  max-width: var(--sz-3xl);
+  margin: 0 auto var(--sz-base);
+}
+
+.dropContainer p {
+  opacity: 0.3;
+  font-weight: 600;
+  margin-top: var(--sz-base);
+}

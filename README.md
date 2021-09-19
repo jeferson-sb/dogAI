@@ -2,20 +2,11 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/937b4244-2340-4e42-b344-c04bee2f80b3/deploy-status)](https://app.netlify.com/sites/dogai/deploys)
 
-![Gif demo](./.github/experimenting.gif)
+![Gif demo](./.github/demo.webm)
 
 ## 💡 Project
 
 Recognize over 100 dog breeds by drag and drop an image using Tensorflow.js and Teachable Machine.
-
-### Training Process
-
-1. Gather a dataset with a bunch of images
-2. Resize and minify all the images
-3. Separate dogs image by breed and rename all the files
-4. Upload to Teachable Machine
-5. Train your model
-6. Export your trained model
 
 ## 🛠 Tools
 
@@ -32,17 +23,38 @@ Recognize over 100 dog breeds by drag and drop an image using Tensorflow.js and 
 
 ### Installation
 
-Clone the repository and run
-
 ```bash
-$ cd dogAI && yarn
+$ git clone git@github.com:jeferson-sb/dogAI.git && cd dogAI
+$ npm install
 ```
 
 ### Usage
 
 ```bash
-$ yarn start
+$ npm run start
 ```
+
+### Tests
+
+```bash
+$ npm run test
+```
+
+### Linting
+
+```bash
+$ npm run lint:js
+$ npm run lint:css
+```
+
+### How to Train your own model
+
+1. Gather a dataset with a bunch of images
+2. Resize and minify all the images
+3. Separate dogs image by breed and rename all the files
+4. Upload to Teachable Machine
+5. Train your model
+6. Export your trained model
 
 ## Dataset Reference
 

@@ -1,0 +1,20 @@
+.alert {
+  --alert-text-color: var(--black);
+  --alert-bg-color: var(--white);
+
+  color: var(--alert-text-color);
+  padding: 1em;
+  background-color: var(--alert-bg-color);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.danger {
+  --alert-text-color: var(--white);
+  --alert-bg-color: var(--red);
+}
+
+.warning {
+  --alert-text-color: var(--black);
+  --alert-bg-color: var(--yellow);
+}
