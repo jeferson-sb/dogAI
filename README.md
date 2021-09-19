@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/937b4244-2340-4e42-b344-c04bee2f80b3/deploy-status)](https://app.netlify.com/sites/dogai/deploys)
 
-![Gif demo](./.github/demo.webm)
+<video src="./.github/demo.webm" controls></video>
 
 ## 💡 Project
 
