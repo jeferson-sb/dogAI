@@ -27,10 +27,9 @@ export function useFormUpload() {
   const handleResults = useCallback(async (data) => {
     setPrediction(data)
 
-    let filteredDesc
     let breed = data.className.replace(/(_)/gi, ' ')
-    if (breed === 'Cão Selvagem') {
-      breed = 'Canids'
+    if (breed === 'wild dog') {
+      breed = 'Canidae'
     }
 
     const wikipediaApiUrl = encodeURI(
@@ -40,16 +39,16 @@ export function useFormUpload() {
     const wikipediaPages = await retrieve(wikipediaApiUrl)
 
     if (wikipediaPages.query) {
-      wikipediaPages.query.pages.forEach((page) => {
-        if (
-          page.title.toLowerCase().includes(breed) &&
-          page.extract.search(/(dog|canid|breed)/g) !== -1
-        ) {
-          filteredDesc = page.extract
-        } else {
-          filteredDesc = wikipediaPages.query.pages[0].extract
-        }
-      })
+      const pageDescription = wikipediaPages.query.pages.find(
+        (page) =>
+          page.title.toLowerCase().includes(breed.toLowerCase()) &&
+          page.extract.search(/(\bdog\b|canid|breed)/g) !== -1
+      )
+
+      const filteredDesc = pageDescription.extract
+        ? pageDescription.extract
+        : wikipediaPages.query.pages[0].extract
+
       setDescription({
         desc: `${filteredDesc.substring(0, 400 - 10)}...`,
         wikiUrl: `${process.env.REACT_APP_WIKIPEDIA_WIKI}/${breed}`,
