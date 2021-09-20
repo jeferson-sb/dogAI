@@ -23,7 +23,7 @@ function DropContainer({ children, header, subheader, Image, active, reject }) {
   )
 
   return (
-    <div className={containerStyles}>
+    <div className={containerStyles} data-testid="dropzone-container">
       <Image />
       <DropContainerHeader>{header}</DropContainerHeader>
       <DropContainerSubheader>{subheader}</DropContainerSubheader>

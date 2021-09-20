@@ -15,7 +15,7 @@ function PredictionResult({ prediction, description }) {
       </h2>
 
       <h4 className={styles.subheading}>
-        {prediction.className === 'Selvagem' ? (
+        {prediction.className === 'wild dog' ? (
           'Canid'
         ) : (
           <>
