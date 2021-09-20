@@ -2,7 +2,7 @@ import { screen, render } from '@testing-library/react'
 
 import ProgressBar from './ProgressBar'
 
-describe('<ProgressBar>', () => {
+describe('<ProgressBar />', () => {
   it('render progress bar component', () => {
     render(
       <ProgressBar min="0" max="100" value="50">
