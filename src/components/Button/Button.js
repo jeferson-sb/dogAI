@@ -1,17 +1,19 @@
-import { useMemo } from 'react'
+import { useMemo, forwardRef } from 'react'
 import cx from 'clsx'
 
 import styles from './Button.module.css'
 
-function Button({
-  children,
-  onClick,
-  asLink,
-  href,
-  isSubmit = false,
-  rounded,
-  shine,
-}) {
+const Button = forwardRef((props, ref) => {
+  const {
+    children,
+    onClick,
+    asLink,
+    href,
+    isSubmit = false,
+    rounded,
+    shine,
+  } = props
+
   const buttonStyles = useMemo(
     () =>
       cx({
@@ -23,11 +25,12 @@ function Button({
   )
 
   return asLink ? (
-    <a href={href} className={`${buttonStyles} ${styles.link}`}>
+    <a ref={ref} href={href} className={`${buttonStyles} ${styles.link}`}>
       {children}
     </a>
   ) : (
     <button
+      ref={ref}
       type={isSubmit ? 'submit' : 'button'}
       onClick={onClick}
       className={buttonStyles}
@@ -35,6 +38,6 @@ function Button({
       {children}
     </button>
   )
-}
+})
 
 export default Button
