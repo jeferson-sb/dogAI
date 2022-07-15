@@ -5,7 +5,7 @@ import './styles/reset.css'
 import './styles/global.css'
 
 import App from './App'
-import * as serviceWorker from './serviceWorker'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,4 +14,4 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-serviceWorker.register()
+serviceWorkerRegistration.register()
