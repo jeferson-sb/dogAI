@@ -24,6 +24,18 @@ export function useFormUpload() {
 
   const { retrieve } = useFetch()
 
+  const findWikiDescription = (pages, term) => {
+    const text = pages.query.pages.find(
+      (page) =>
+        page.title.toLowerCase().includes(term) &&
+        page.extract.search(/(\bdog\b|canid|breed)/g) !== -1
+    )
+
+    if (!pages.query) return null
+
+    return text?.extract ?? pages.query?.pages[0]?.extract
+  }
+
   const handleResults = useCallback(async (data) => {
     setPrediction(data)
 
@@ -38,19 +50,12 @@ export function useFormUpload() {
 
     const wikipediaPages = await retrieve(wikipediaApiUrl)
 
-    if (wikipediaPages.query) {
-      const pageDescription = wikipediaPages.query.pages.find(
-        (page) =>
-          page.title.toLowerCase().includes(breed.toLowerCase()) &&
-          page.extract.search(/(\bdog\b|canid|breed)/g) !== -1
-      )
+    const term = breed.toLowerCase().replace('-', ' ')
+    const text = findWikiDescription(wikipediaPages, term)
 
-      const filteredDesc = pageDescription.extract
-        ? pageDescription.extract
-        : wikipediaPages.query.pages[0].extract
-
+    if (text) {
       setDescription({
-        desc: `${filteredDesc.substring(0, 400 - 10)}...`,
+        desc: `${text.substring(0, 400 - 10)}...`,
         wikiUrl: `${process.env.REACT_APP_WIKIPEDIA_WIKI}/${breed}`,
       })
     } else {
