@@ -1,45 +1,45 @@
 /* Theme styles and Base system */
 :root {
-  /* Typography */
-  --text-xsm: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 2.5rem;
-  --text-3xl: 3.75rem;
+	/* Typography */
+	--text-xsm: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-lg: 1.125rem;
+	--text-xl: 1.25rem;
+	--text-2xl: 2.5rem;
+	--text-3xl: 3.75rem;
 
-  /* Colors */
-  --blue: hsl(204, 72%, 74%);
-  --white: hsl(0, 0%, 96%);
-  --red: hsl(0, 68%, 68%);
-  --amethyst: hsl(237, 57%, 74%);
-  --yellow: hsl(48, 57%, 74%);
-  --black: hsl(0, 0%, 19%);
-  --gray: hsl(0, 0%, 85%);
-  --purple: hsl(237, 41%, 35%);
+	/* Colors */
+	--blue: hsl(204, 72%, 74%);
+	--white: hsl(0, 0%, 96%);
+	--red: hsl(0, 68%, 68%);
+	--amethyst: hsl(237, 57%, 74%);
+	--yellow: hsl(48, 57%, 74%);
+	--black: hsl(0, 0%, 19%);
+	--gray: hsl(0, 0%, 85%);
+	--purple: hsl(237, 41%, 35%);
 
-  /* Sizes */
-  --sz-sm: 0.5rem;
-  --sz-base: 1rem;
-  --sz-md: 1.5rem;
-  --sz-lg: 2rem;
-  --sz-xl: 2.5rem;
-  --sz-2xl: 3rem;
-  --sz-3xl: 3.5rem;
+	/* Sizes */
+	--sz-sm: 0.5rem;
+	--sz-base: 1rem;
+	--sz-md: 1.5rem;
+	--sz-lg: 2rem;
+	--sz-xl: 2.5rem;
+	--sz-2xl: 3rem;
+	--sz-3xl: 3.5rem;
 
-  /* Fonts */
-  --font-title: 'Raleway', Helvetica, sans-serif;
-  --font-body: 'Roboto', Arial, sans-serif;
+	/* Fonts */
+	--font-title: "Raleway", Helvetica, sans-serif;
+	--font-body: "Roboto", Arial, sans-serif;
 }
 
 html,
 body {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--amethyst);
+	font-family: var(--font-body);
+	font-size: var(--text-base);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--amethyst);
 }
 
 h1,
@@ -48,5 +48,5 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-title);
+	font-family: var(--font-title);
 }

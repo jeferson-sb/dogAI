@@ -1,14 +1,14 @@
 .logo {
-  display: flex;
+	display: flex;
 }
 
 .logo h2 {
-  color: var(--white);
-  font-size: var(--text-2xl);
-  font-family: var(--font-body);
-  margin-right: var(--sz-md);
+	color: var(--white);
+	font-size: var(--text-2xl);
+	font-family: var(--font-body);
+	margin-right: var(--sz-md);
 }
 
 .logo svg {
-  max-width: 64px;
+	max-width: 64px;
 }
