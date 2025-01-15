@@ -1,0 +1,54 @@
+.programmer {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.programmer>div {
+  position: relative;
+  width: fit-content;
+  padding: var(--sz-base);
+  border-radius: 1rem;
+  border: 1px solid hsl(237, 57%, 80%);
+  box-shadow: 0px 3px 4px 0px hsl(237 57% 64% / .2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    border-radius: inherit;
+    background: repeating-linear-gradient(45deg, var(--amethyst), var(--white) 15%);
+    opacity: 0.2;
+    filter: blur(5px);
+  }
+
+  & span {
+    font-size: var(--text-lg);
+    font-family: var(--font-title);
+    font-weight: 700;
+    opacity: 0.8;
+  }
+
+  & a {
+    font-style: italic;
+    color: var(--purple);
+    text-decoration-line: none;
+  }
+}
+
+
+.tools {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--purple);
+  opacity: .7;
+}

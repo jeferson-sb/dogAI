@@ -29,7 +29,7 @@ const Button = forwardRef((props, ref) => {
 		<NavLink
 			ref={ref}
 			to={href}
-			className={`${buttonStyles} ${styles.NavLink}`}
+			className={`${buttonStyles} ${styles.link}`}
 			viewTransition
 		>
 			{children}
