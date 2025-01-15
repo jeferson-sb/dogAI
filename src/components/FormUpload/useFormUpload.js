@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
-import { useMLModel } from 'hook/useMLModel'
-import { useFetch } from 'hook/useFetch'
+import { useMLModel } from '@/hook/useMLModel'
+import { useFetch } from '@/hook/useFetch'
 
 export function useFormUpload() {
   const [file, setFile] = useState([])

@@ -1,15 +1,15 @@
 import React from 'react'
 import { useDropzone } from 'react-dropzone'
 
-import uploadSVG from 'assets/uploadImage.svg'
-import closeSVG from 'assets/close.svg'
+import uploadSVG from '@/assets/uploadImage.svg'
+import closeSVG from '@/assets/close.svg'
 
-import DropContainer from 'components/DropContainer'
-import PredictionResult from 'components/PredictionResult/PredictionResult'
-import Loading from 'components/Loading'
-import Preview from 'components/Preview'
-import Button from 'components/Button'
-import Alert from 'components/Alert'
+import DropContainer from '@/components/DropContainer'
+import PredictionResult from '@/components/PredictionResult/PredictionResult'
+import Loading from '@/components/Loading'
+import Preview from '@/components/Preview'
+import Button from '@/components/Button'
+import Alert from '@/components/Alert'
 
 import styles from './FormUpload.module.css'
 

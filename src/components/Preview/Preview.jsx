@@ -1,4 +1,4 @@
-import formatFileSize from 'utils/formatFileSize'
+import formatFileSize from '@/utils/formatFileSize'
 
 import styles from './Preview.module.css'
 

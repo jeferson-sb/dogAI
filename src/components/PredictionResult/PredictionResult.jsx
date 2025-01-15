@@ -1,7 +1,7 @@
-import track from 'assets/track.svg'
+import track from '@/assets/track.svg'
 
-import Alert from 'components/Alert/'
-import ProgressBar from 'components/ProgressBar'
+import Alert from '@/components/Alert/'
+import ProgressBar from '@/components/ProgressBar'
 
 import styles from './PredictionResult.module.css'
 

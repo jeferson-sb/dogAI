@@ -14,6 +14,9 @@ Recognize over 100 dog breeds by drag and drop an image using Tensorflow.js and 
 - [React Dropzone](https://github.com/react-dropzone/react-dropzone)
 - [Tensorflow.js](https://github.com/tensorflow/tfjs)
 - [Teachable Machine](https://teachablemachine.withgoogle.com/)
+- [Vitest](https://vitest.dev/)
+- [Biome](https://biomejs.dev/)
+- [React-Router v7](https://reactrouter.com/)
 
 ## 💻Demo
 

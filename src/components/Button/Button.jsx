@@ -2,6 +2,7 @@ import { useMemo, forwardRef } from 'react'
 import cx from 'clsx'
 
 import styles from './Button.module.css'
+import { NavLink } from "react-router";
 
 const Button = forwardRef((props, ref) => {
   const {
@@ -25,9 +26,9 @@ const Button = forwardRef((props, ref) => {
   )
 
   return asLink ? (
-    <a ref={ref} href={href} className={`${buttonStyles} ${styles.link}`}>
+    <NavLink ref={ref} to={href} className={`${buttonStyles} ${styles.NavLink}`} viewTransition>
       {children}
-    </a>
+    </NavLink>
   ) : (
     <button
       ref={ref}

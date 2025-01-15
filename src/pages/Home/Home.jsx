@@ -1,7 +1,7 @@
-import Button from 'components/Button'
-import Logo from 'components/Logo'
+import Button from '@/components/Button'
+import Logo from '@/components/Logo'
 
-import dogScanImg from 'assets/dog-scan.png'
+import dogScanImg from '@/assets/dog-scan.png'
 
 import styles from './Home.module.css'
 
