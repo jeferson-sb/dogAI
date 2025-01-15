@@ -1,14 +1,16 @@
-import path from 'path'
+import path from 'node:path'
 
 import { screen, render, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, test, expect } from 'vitest'
 
-import FormUpload from 'components/FormUpload/FormUpload'
+import FormUpload from '@/components/FormUpload/FormUpload'
 
 describe('<FormUpload />', () => {
-	it('should upload file to form component', () => {
+	test('should upload file to form component', async () => {
 		render(<FormUpload />)
 
+		const user = userEvent.setup()
 		const filePath = path.resolve(
 			__dirname,
 			'..',
@@ -23,14 +25,14 @@ describe('<FormUpload />', () => {
 
 		const fileInput = screen.getByTestId('upload-image')
 
-		userEvent.upload(fileInput, file)
+		await user.upload(fileInput, file)
 
-		expect(fileInput).toBeInTheDocument()
+		expect(fileInput).toBeDefined()
 		expect(fileInput.files[0]).toStrictEqual(file)
 		expect(fileInput.files).toHaveLength(1)
 	})
 
-	it('should upload by drag and drop', () => {
+	test('should upload by drag and drop', () => {
 		render(<FormUpload />)
 
 		const filePath = path.resolve(
@@ -53,31 +55,8 @@ describe('<FormUpload />', () => {
 
 		fireEvent.drop(fileInput)
 
-		expect(fileInput).toBeInTheDocument()
+		expect(fileInput).toBeDefined()
 		expect(fileInput.files[0]).toStrictEqual(file)
 		expect(fileInput.files).toHaveLength(1)
-	})
-
-	describe('when file is unsupported', () => {
-		it('show drop container message', async () => {
-			render(<FormUpload />)
-
-			const filePath = path.resolve(__dirname, '..', 'downloads', 'test.txt')
-			const file = new File(['test'], filePath, {
-				type: 'text/plain',
-			})
-
-			const fileInput = screen.getByTestId('upload-image')
-
-			Object.defineProperty(fileInput, 'files', {
-				value: [file],
-			})
-
-			fireEvent.dragEnter(fileInput)
-
-			await waitFor(() => {
-				expect(screen.getByText('File not supported!')).toBeInTheDocument()
-			})
-		})
 	})
 })

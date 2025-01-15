@@ -1,20 +1,21 @@
 import { screen, render } from '@testing-library/react'
-import path from 'path'
+import path from 'node:path'
+import { vi, describe, test, expect } from 'vitest'
 
-import FormUpload from 'components/FormUpload/FormUpload'
-import { useFormUpload } from 'components/FormUpload/useFormUpload'
+import FormUpload from '@/components/FormUpload/FormUpload'
+import { useFormUpload } from '@/components/FormUpload/useFormUpload'
 
-jest.mock('../../components/FormUpload/useFormUpload')
+vi.mock('../../components/FormUpload/useFormUpload')
 
 describe('useFormUpload', () => {
-	it('shows preview and description', () => {
+	test('shows preview and description', () => {
 		const filePath = path.resolve(__dirname, '..', 'downloads', 'dog.jpg')
 		const file = new File(['dog'], filePath, {
 			type: 'image/jpg',
 		})
 
 		useFormUpload.mockReturnValue({
-			onDrop: jest.fn(),
+			onDrop: vi.fn(),
 			file: Object.assign(file, { preview: filePath }),
 			prediction: { probability: 1, className: 'german shepherd' },
 			description: {
@@ -27,30 +28,26 @@ describe('useFormUpload', () => {
 
 		render(<FormUpload />)
 
-		expect(screen.getByRole('figure')).toBeInTheDocument()
-		expect(screen.queryByRole('img', { name: filePath })).toHaveAttribute(
-			'src',
-			filePath,
-		)
-		expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+		expect(screen.getByRole('figure')).toBeDefined()
+		expect(screen.getByTestId('preview-image').getAttribute('src')).toBe(filePath)
+		expect(screen.getByRole('heading', { level: 2 }).textContent).toBe(
 			'german shepherd',
 		)
-		expect(screen.getByText('lorem ipsum dolor sit')).toBeInTheDocument()
-		expect(screen.getByRole('link')).toHaveAttribute(
-			'href',
+		expect(screen.getByText('lorem ipsum dolor sit')).toBeDefined()
+		expect(screen.getByRole('link').getAttribute('href')).toBe(
 			'https://wikipedia.org',
 		)
 	})
 
 	describe('when scan fail', () => {
-		it('returns alert', () => {
+		test('returns alert', () => {
 			const filePath = path.resolve(__dirname, '..', 'downloads', 'dog.jpg')
 			const file = new File(['dog'], filePath, {
 				type: 'image/jpg',
 			})
 
 			useFormUpload.mockReturnValue({
-				onDrop: jest.fn(),
+				onDrop: vi.fn(),
 				file: Object.assign(file, { preview: filePath }),
 				prediction: {},
 				description: {},
@@ -60,8 +57,8 @@ describe('useFormUpload', () => {
 
 			render(<FormUpload />)
 
-			expect(screen.getByRole('alert')).toBeInTheDocument()
-			expect(screen.getByRole('alert')).toHaveTextContent(
+			expect(screen.getByRole('alert')).toBeDefined()
+			expect(screen.getByRole('alert').textContent).toBe(
 				'Fail to scan image, try again with a different one.',
 			)
 		})

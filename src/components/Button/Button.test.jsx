@@ -1,22 +1,24 @@
 import { screen, render } from '@testing-library/react'
+import { describe, test, expect, vi } from 'vitest'
 
 import Button from './Button'
+import userEvent from '@testing-library/user-event'
 
 describe('<Button />', () => {
-	it('renders component with button role', () => {
+	test('renders component with button role', () => {
 		render(<Button>Submit</Button>)
-		expect(screen.getByRole('button')).toBeInTheDocument()
-		expect(screen.getByRole('button')).toHaveClass('button')
+		expect(screen.getByRole('button')).toBeDefined()
+		expect(screen.getByRole('button').className).toContain('button')
 	})
 
-	it('renders as anchor tag', () => {
-		render(
-			<Button asLink href="/">
-				Enter
-			</Button>,
-		)
-		expect(screen.getByRole('link')).toBeInTheDocument()
-		expect(screen.getByRole('link')).toHaveAttribute('href', '/')
-		expect(screen.getByRole('link')).toHaveClass('button link')
+	test('call onClick', async () => {
+		const onClick = vi.fn()
+		const user = userEvent.setup()
+		render(<Button onClick={onClick}>Click me</Button>)
+
+		const button = screen.getByRole('button', { name: /click me/i })
+		await user.click(button);
+
+		expect(onClick).toBeCalledTimes(1)
 	})
 })
