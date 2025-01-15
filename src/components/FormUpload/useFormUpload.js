@@ -1,16 +1,17 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { useMLModel } from '@/hook/useMLModel'
 import { useFetch } from '@/hook/useFetch'
 
 export function useFormUpload() {
-	const [file, setFile] = useState([])
+	const [file, setFile] = useState({})
 	const [prediction, setPrediction] = useState([])
 	const [description, setDescription] = useState({})
 	const [error, setError] = useState(null)
 
 	const statusType = {
 		IDLE: 'IDLE',
+		LOADING: 'LOADING',
 		FULFILLED: 'FULFILLED',
 		REJECTED: 'REJECTED',
 	}
@@ -45,9 +46,9 @@ export function useFormUpload() {
 		}
 
 		const wikipediaApiUrl = encodeURI(
-			`${process.env.REACT_APP_WIKIPEDIA_ENDPOINT}${breed}`,
+			`${import.meta.env.VITE_WIKIPEDIA_ENDPOINT}${breed}`,
 		)
-
+	
 		const wikipediaPages = await retrieve(wikipediaApiUrl)
 
 		const term = breed.toLowerCase().replace('-', ' ')
@@ -56,7 +57,7 @@ export function useFormUpload() {
 		if (text) {
 			setDescription({
 				desc: `${text.substring(0, 400 - 10)}...`,
-				wikiUrl: `${process.env.REACT_APP_WIKIPEDIA_WIKI}/${breed}`,
+				wikiUrl: `${import.meta.env.VITE_WIKIPEDIA_WIKI}/${breed}`,
 			})
 		} else {
 			setDescription({
@@ -67,26 +68,34 @@ export function useFormUpload() {
 		}
 	}, [])
 
-	const onDrop = useCallback(async (acceptedFiles) => {
+	const predictImage = useCallback(async () => {
 		try {
-			const [single] = acceptedFiles
-			setFile(
-				Object.assign(single, {
-					preview: URL.createObjectURL(single),
-				}),
-			)
+			setStatus(statusType.LOADING)
 
 			const image = document.getElementById('image')
-			const mlPrediction = await predict(image)
 
+			const mlPrediction = await predict(image)
 			await handleResults(mlPrediction)
-		} catch (err) {
-			setError(err)
+		} catch (error) {
+			setError(error)
 			setStatus(statusType.REJECTED)
 		} finally {
 			setStatus(statusType.FULFILLED)
 		}
 	}, [])
+
+	const onDrop = useCallback(async (acceptedFiles) => {
+		const [single] = acceptedFiles
+		setFile(
+			Object.assign(single, {
+				preview: URL.createObjectURL(single),
+			}),
+		)
+	}, [])
+
+	useEffect(() => {
+		if (file?.name) predictImage()
+	}, [file, predictImage])
 
 	return {
 		onDrop,
@@ -94,7 +103,7 @@ export function useFormUpload() {
 		prediction,
 		description,
 		error,
-		isLoading: status === statusType.IDLE,
+		isLoading: status === statusType.LOADING,
 		isFinished: status === statusType.FULFILLED,
 		isRejected: status === statusType.REJECTED,
 	}

@@ -7,6 +7,7 @@ function Preview({ file }) {
 		<div className={styles.fileInfo}>
 			<figure className={styles.fileInfo_preview}>
 				<img
+					loading="lazy"
 					className={styles.fileInfo_previewImage}
 					src={file.preview}
 					alt={file.name}

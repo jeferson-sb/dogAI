@@ -24,7 +24,7 @@ function FormUpload() {
 
 	return (
 		<>
-			{file.name ? (
+			{file?.name ? (
 				<div className={styles.container}>
 					<section className={styles.wrapper}>
 						<div className={styles.buttonGroup}>
