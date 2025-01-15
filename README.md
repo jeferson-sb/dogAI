@@ -34,7 +34,7 @@ $ npm install
 ### Usage
 
 ```bash
-$ npm run start
+$ npm run dev
 ```
 
 ### Tests
@@ -46,8 +46,8 @@ $ npm run test
 ### Linting
 
 ```bash
-$ npm run lint:js
-$ npm run lint:css
+$ npm run lint
+$ npm run format
 ```
 
 ### How to Train your own model
