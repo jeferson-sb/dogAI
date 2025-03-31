@@ -33,7 +33,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "globals": "^15.14.0",
     "happy-dom": "^17.4.4",
-    "stylelint": "^13.13.1",
+    "stylelint": "^16.17.0",
     "stylelint-config-standard": "^22.0.0",
     "taze": "^19.0.2",
     "vite": "^6.0.5",
