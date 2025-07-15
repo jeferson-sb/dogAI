@@ -22,7 +22,7 @@
     "react-dom": "^19.0.0",
     "react-dropzone": "^14.3.8",
     "react-router-dom": "^7.6.3",
-    "vite-plugin-pwa": "^0.21.1"
+    "vite-plugin-pwa": "^1.0.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
