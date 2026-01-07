@@ -30,27 +30,36 @@ Recognize over 100 dog breeds by drag and drop an image using Tensorflow.js and 
 ### Installation
 
 ```bash
-$ git clone git@github.com:jeferson-sb/dogAI.git && cd dogAI
-$ npm install
+git clone git@github.com:jeferson-sb/dogAI.git && cd dogAI
+npm install
+```
+
+Wikipedia integration
+
+```
+cp .env.example .env
+
+VITE_WIKIPEDIA_ENDPOINT=https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&uselang=pt&prop=extracts&generator=prefixsearch&redirects=1&converttitles=1&formatversion=2&exintro=1&explaintext=1&gpssearch=
+VITE_WIKIPEDIA_WIKI=https://en.wikipedia.org/wiki
 ```
 
 ### Usage
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 ### Tests
 
 ```bash
-$ npm run test
+npm run test
 ```
 
 ### Linting
 
 ```bash
-$ npm run lint
-$ npm run format
+npm run lint
+npm run format
 ```
 
 ### How to Train your own model
