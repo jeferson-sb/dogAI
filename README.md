@@ -8,6 +8,9 @@ https://user-images.githubusercontent.com/30840709/133912996-73859a5d-dd06-4c92-
 
 Recognize over 100 dog breeds by drag and drop an image using Tensorflow.js and Teachable Machine.
 
+> [!WARNING]
+> This project is solely built around Machine Learning (no LLMs, no servers), I trained the model myself with a public dataset, so please don't expect 100% accuracy.
+
 ## 🛠 Tools
 
 - [React](https://reactjs.org/)
