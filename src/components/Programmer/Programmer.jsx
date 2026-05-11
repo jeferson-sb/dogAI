@@ -103,7 +103,7 @@ function Programmer() {
 			<div>
 				<span>
 					Proudly made by{' '}
-					<a href="github.com/jeferson-sb" target="_blank" rel="noreferrer">
+					<a href="https://github.com/jeferson-sb" target="_blank" rel="noreferrer">
 						Jeferson Brito
 					</a>
 				</span>
